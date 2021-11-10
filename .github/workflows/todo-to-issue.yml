@@ -18,7 +18,7 @@ jobs:
           restore-keys: docker-layer-caching-todo-to-issue-
           concurrency: 4
           skip-save: false
-          continue-on-error: true
+        continue-on-error: true
         
       - name: TODO to Issue
         uses: alstr/todo-to-issue-action@v4.4.1
