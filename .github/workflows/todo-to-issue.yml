@@ -11,14 +11,5 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Layer Cache
-        uses: satackey/action-docker-layer-caching@v0.0.11
-        with:
-          key: docker-layer-caching-todo-to-issue-{hash}
-          restore-keys: docker-layer-caching-todo-to-issue-
-          concurrency: 4
-          skip-save: false
-        continue-on-error: true
-        
       - name: TODO to Issue
-        uses: alstr/todo-to-issue-action@v4.4.1
+        uses: alstr/todo-to-issue-action@latest
