@@ -11,12 +11,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # In this step, this action saves a list of existing images,
-      # the cache is created without them in the post run.
-      # It also restores the cache if it exists.
-      - uses: satackey/action-docker-layer-caching@v0.0.11
-        # Ignore the failure of a step and avoid terminating the job.
-        continue-on-error: true
+      - name: Layer Cache
+        uses: satackey/action-docker-layer-caching@v0.0.11
+        with:
+          key: docker-layer-caching-todo-to-issue-{hash}
+          restore-keys: docker-layer-caching-todo-to-issue-
+          concurrency: 4
+          skip-save: false
+          continue-on-error: true
         
       - name: TODO to Issue
         uses: alstr/todo-to-issue-action@v4.4.1
